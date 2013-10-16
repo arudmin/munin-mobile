@@ -7,14 +7,14 @@ echo ""
 echo "Mobile Munin Template Installer"
 echo ""
 echo "This will create the following directories: "
-echo " .$muninhtmldir/mobile"
-echo " .$munindir/templates-mobiles"
+echo " .${muninhtmldir}/mobile"
+echo " .${munindir}/templates-mobiles"
 echo ""
 echo "And copy the following files:"
-echo " ./munin-mobile.conf   -> $munindir/munin-mobile.conf"
-echo " ./templates-mobiles/* -> $munindir/templates-mobiles/"
-echo " ./mobile-www/*        -> $muninhtmldir/mobile/*"
-echo " ./update-mobile.sh    -> $munindir/update-mobile.sh"
+echo " ./munin-mobile.conf   -> ${munindir}/munin-mobile.conf"
+echo " ./templates-mobiles/* -> ${munindir}/templates-mobiles/"
+echo " ./mobile-www/*        -> ${muninhtmldir}/mobile/*"
+echo " ./update-mobile.sh    -> ${munindir}/update-mobile.sh"
 echo ""
 echo "It also sets the permissions to the same as your munin files"
 echo ""
@@ -32,7 +32,7 @@ then
 	read continue
      fi
 else
-    echo -n "Continue? [Y]: "
+    echo -n "Continue? [y]: "
     read continue
 fi
 
@@ -44,41 +44,41 @@ else
         exit
 fi
 
-if [ -f $munindir/munin-mobile.conf ]
+if [ -f ${munindir}/munin-mobile.conf ]
 then
-    echo "-  $munindir/munin-mobile.conf       - file exists! (not copied)"
+    echo "-  ${munindir}/munin-mobile.conf       - file exists! (not copied)"
 else
-    echo "- ./munin-mobile.conf -> $munindir/munin-mobile.conf"
-    cp `pwd`/munin-mobile.conf $munindir/munin-mobile.conf    
-    chown $munindir/munin-mobile.conf --reference=$munindir/munin.conf
+    echo "- ./munin-mobile.conf -> ${munindir}/munin-mobile.conf"
+    cp `pwd`/munin-mobile.conf ${munindir}/munin-mobile.conf    
+    chown ${munindir}/munin-mobile.conf --reference=${munindir}/munin.conf
 fi    
 
-echo "- ./templates-mobiles                 -> $munindir/templates-mobiles"
+echo "- ./templates-mobiles                 -> ${munindir}/templates-mobiles"
 
-if [ ! -d $munindir/templates-mobiles ]
+if [ ! -d ${munindir}/templates-mobiles ]
 then
-    mkdir $munindir/templates-mobiles
+    mkdir ${munindir}/templates-mobiles
 fi
 
-cp `pwd`/templates-mobiles/* $munindir/templates-mobiles/
-chown -R $munindir/templates-mobiles --reference=$munindir/templates
+cp `pwd`/templates-mobiles/* ${munindir}/templates-mobiles/
+chown -R ${munindir}/templates-mobiles --reference=${munindir}/templates
 
-echo "- ./mobile-www                        -> $muninhtmldir/mobile"
+echo "- ./mobile-www                        -> ${muninhtmldir}/mobile"
 
-if [ ! -d $muninhtmldir/mobile ]
+if [ ! -d ${muninhtmldir}/mobile ]
 then
-    mkdir $muninhtmldir/mobile
+    mkdir ${muninhtmldir}/mobile
 fi
 
-cp -r `pwd`/mobile-www/* $muninhtmldir/mobile
-chown -R $muninhtmldir/mobile --reference=/var/www/munin
+cp -r `pwd`/mobile-www/* ${muninhtmldir}/mobile
+chown -R ${muninhtmldir}/mobile --reference=/var/www/munin
 
-echo "- ./update-mobile.sh                 -> $munindir/update-mobile.sh"
+echo "- ./update-mobile.sh                 -> ${munindir}/update-mobile.sh"
 
-cp update-mobile.sh $munindir/
-chown $munindir/update-mobile.sh --reference=$munindir/munin-mobile.conf
+cp update-mobile.sh ${munindir}/
+chown ${munindir}/update-mobile.sh --reference=${munindir}/munin-mobile.conf
 
-chmod 755 $munindir/update-mobile.sh
+chmod 755 ${munindir}/update-mobile.sh
 
 echo ""
 echo "Finished!"
