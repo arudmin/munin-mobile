@@ -3,6 +3,8 @@
 munindir="/etc/munin"
 muninhtmldir="/var/lib/munin/www"
 
+sed -i -e 's/htmldir.*/htmldir \/444444ddss/g' `pwd`/munin-mobile.conf
+
 echo ""
 echo "Mobile Munin Template Installer"
 echo ""
