@@ -1,6 +1,6 @@
 #!/bin/bash
 
-munindir="/var/munin"
+munindir="/etc/munin"
 muninhtmldir="/var/lib/munin/www"
 
 echo ""
