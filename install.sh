@@ -1,4 +1,8 @@
 #!/bin/bash
+
+munindir="/var/munin"
+muninhtmldir="/var/lib/munin/www"
+
 echo ""
 echo "Mobile Munin Template Installer"
 echo ""
@@ -16,9 +20,6 @@ echo "It also sets the permissions to the same as your munin files"
 echo ""
 echo "############################################################"
 echo ""
-
-munindir = "$munindir"
-muninhtmldir = "/var/lib/munin/www"
 
 if [ $1 ]
 then
@@ -81,4 +82,3 @@ chmod 755 $munindir/update-mobile.sh
 
 echo ""
 echo "Finished!"
-
