@@ -3,7 +3,7 @@
 munindir="/etc/munin"
 muninhtmldir="/var/lib/munin/www"
 
-sed -i -e 's/htmldir.*/htmldir \/444444ddss/g' `pwd`/munin-mobile.conf
+sed -i -e 's/htmldir.*/htmldir ${muninhtmldir}/g' `pwd`/munin-mobile.conf
 
 echo ""
 echo "Mobile Munin Template Installer"
@@ -73,7 +73,7 @@ then
 fi
 
 cp -r `pwd`/mobile-www/* ${muninhtmldir}/mobile
-chown -R ${muninhtmldir}/mobile --reference=/var/www/munin
+chown -R ${muninhtmldir}/mobile --reference=${muninhtmldir}
 
 echo "- ./update-mobile.sh                 -> ${munindir}/update-mobile.sh"
 
